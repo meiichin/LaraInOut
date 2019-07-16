@@ -106,6 +106,13 @@ class KategoriController extends Controller
     {
         $model = Kategori::all();
         return DataTables::of($model)
+        ->addColumn('tipe', function ($model) {
+            if($model->tipe == "0"){
+                return "<span class='badge badge-danger text-white'>Pengeluaran</span>";
+            }else{
+                return "<span class='badge badge-success text-white'>Pemasukan</span>";
+            }
+        })
         ->addColumn('action', function ($model) {
             return view('layouts._action', [
                 'model' => $model,
@@ -114,7 +121,16 @@ class KategoriController extends Controller
             ]);
         })
         ->addIndexColumn()
-        ->rawColumns(['action'])
+        ->rawColumns(['action','tipe'])
         ->make(true);
+    }
+    public function valkategori($id)
+    {
+        $model = Kategori::where('tipe', $id)->get();
+        foreach ($model as $key => $value) {
+            $data[] = '<option value="'.$value->id.'">'.$value->nama.'</option>';
+        }
+        return $data;
+
     }
 }
