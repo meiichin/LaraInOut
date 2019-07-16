@@ -7,7 +7,7 @@ Kategori
 @section('content')
 <div class="panel panel-primary">
             <a href="{{ route('kategori.create') }}" class="btn btn-success pull-right modal-show mb-2"
-                title="Buat Kategori"><i class="icon-plus"></i> Create</a>
+                title="Buat Kategori"><i class="fa fa-plus"></i> Tambah</a>
 
     <div class="panel-body">
         <table id="datatable" class="table table-hover" style="width:100%">
