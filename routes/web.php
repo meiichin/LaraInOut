@@ -15,6 +15,5 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
+Route::resource('kategori', 'KategoriController');
+Route::get('/table/kategori', 'KategoriController@dataTable')->name('table.kategori');
