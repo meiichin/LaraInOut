@@ -26,21 +26,6 @@ Kategori
         </table>
     </div>
 </div>
-<script>
-        $('#datatable').DataTable({
-            responsive: true,
-            processing: true,
-            serverSide: true,
-            ajax: "{{ route('table.kategori') }}",
-            columns: [
-                {data: 'DT_RowIndex', name: 'id'},
-                {data: 'tipe', name: 'tipe'},
-                {data: 'nama', name: 'nama'},
-                {data: 'deskripsi', name: 'deskripsi'},
-                {data: 'action', name: 'action'}
-            ]
-        });
-    </script>
 
 @endsection
 @push('scripts')
