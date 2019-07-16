@@ -65,8 +65,8 @@ Transaksi
             ajax: url,
             columns: [
                 {data: 'DT_RowIndex', name: 'id'},
-                {data: 'kategori_id', name: 'kategori_id'},
-                {data: 'kategori_id', name: 'kategori_id'},
+                {data: 'tipe', name: 'tipe'},
+                {data: 'kate', name: 'kate'},
                 {data: 'nominal', name: 'nominal'},
                 {data: 'deskripsi', name: 'deskripsi'},
                 {data: 'action', name: 'action'}

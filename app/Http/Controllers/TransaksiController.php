@@ -153,6 +153,18 @@ class TransaksiController extends Controller
     {
         $model = Transaksi::whereBetween('created_at', [$start, $end])->get();
         return DataTables::of($model)
+        ->addColumn('kate', function ($model) {
+            $kate = Kategori::find($model->kategori_id)->nama ?? "Undifined";
+            return "<span class='badge badge-info text-white'>".$kate."</span>";
+        })
+        ->addColumn('tipe', function ($model) {
+            $kate = Kategori::find($model->kategori_id)->tipe ?? "Undifined";
+            if($kate == "0"){
+                return "<span class='badge badge-danger text-white'>Pengeluaran</span>";
+            }else{
+                return "<span class='badge badge-success text-white'>Pemasukan</span>";
+            }
+        })
         ->addColumn('action', function ($model) {
             return view('layouts._action', [
                 'model' => $model,
@@ -161,7 +173,7 @@ class TransaksiController extends Controller
             ]);
         })
         ->addIndexColumn()
-        ->rawColumns(['action'])
+        ->rawColumns(['action','kate','tipe'])
         ->make(true);
     }
 
